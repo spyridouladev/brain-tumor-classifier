@@ -38,6 +38,7 @@ Install dependencies
 ```bash
 pip install -r requirements.txt
 ```
+## If you are just testing the pretrained model, you can follow the [CPU Setup](#cpu-setup) instructions and then skip to the [Interactive Demo Application](#interactive-demo-application) section.
 
 ## CPU Setup
 
@@ -49,8 +50,6 @@ Afterwards, you can skip directly to the [Training and Evaluation Pipeline](#tra
 ## GPU Setup and Execution Options
 
 If you want to use GPU acceleration, install the correct PyTorch version for your hardware.
-
-## If you are just testing the pretrained model, you can skip to the [Interactive Demo Application](#interactive-demo-application) section.
 
 ## AMD 
 ```bash
