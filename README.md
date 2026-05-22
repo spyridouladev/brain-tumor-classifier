@@ -6,7 +6,7 @@
 
 This project was built as a learning exercise in deep learning and model interpretability.
 
-## Run Locally
+## Installation and Setup
 
 Clone the project and go to the project directory
 
@@ -35,23 +35,45 @@ Install dependencies
 ```bash
 pip install -r requirements.txt
 ```
-## Run
 
+## GPU Setup and Execution Options
+
+- If you want to use GPU acceleration, install the correct PyTorch version for your hardware.
+
+- If you are using CPU only, you can skip directly to the [Training and Evaluation Pipeline](#training-and-evaluation-pipeline) section.
+
+- If you are just testing the pretrained model, you can skip to the [Interactive Demo Application](#interactive-demo-application) section.
+
+# AMD 
 ```bash
-# preprocess dataset
-python preprocessing.py
-
-# train model
-python train.py
-
-# evaluate model
-python test.py
-
-# generate Grad-CAM visualization
-python gradcam.py
+pip install torch torchvision --index-url https://download.pytorch.org/whl/rocm6.0
+```
+# NVIDIA
+ ```bash
+pip install torch torchvision --index-url https://download.pytorch.org/whl/cu118
 ```
 
-Gradcam outputs are saved in the `results/` directory.
+## Training and Evaluation Pipeline
+
+# preprocess dataset
+```bash
+python preprocessing.py
+```
+
+# train model
+```bash
+python train.py
+```
+
+# evaluate model
+```bash
+python test.py
+```
+
+## Interactive Demo Application
+```bash
+python app.py
+```
 
 ## Dataset
 

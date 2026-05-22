@@ -51,9 +51,8 @@ six==1.17.0
 split-folders==0.6.1
 sympy==1.14.0
 threadpoolctl==3.6.0
-torch==2.11.0+rocm7.2
-torchvision==0.26.0+rocm7.2
-triton-rocm==3.6.0
+torch==2.11.0
+torchvision==0.26.0
 twine==6.2.0
 typing==3.7.4.3
 typing_extensions==4.15.0
