@@ -44,28 +44,28 @@ pip install -r requirements.txt
 
 - If you are just testing the pretrained model, you can skip to the [Interactive Demo Application](#interactive-demo-application) section.
 
-# AMD 
+## AMD 
 ```bash
 pip install torch torchvision --index-url https://download.pytorch.org/whl/rocm6.0
 ```
-# NVIDIA
+## NVIDIA
  ```bash
 pip install torch torchvision --index-url https://download.pytorch.org/whl/cu118
 ```
 
 ## Training and Evaluation Pipeline
 
-# preprocess dataset
+### Preprocess dataset
 ```bash
 python preprocessing.py
 ```
 
-# train model
+### Train model
 ```bash
 python train.py
 ```
 
-# evaluate model
+### Evaluate model
 ```bash
 python test.py
 ```
