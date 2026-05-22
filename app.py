@@ -26,7 +26,12 @@ demo = gr.Interface(
     fn=predict,
     inputs=[
         gr.Image(type="pil"),
-        gr.Dropdown(["None", "Blur", "Black box (center)", "Noise"])
+        gr.Dropdown([
+            "None",
+            "Blur",
+            "Black box",
+            "Noise"
+        ])
     ],
     outputs=[
         gr.Image(label="Grad-CAM"),

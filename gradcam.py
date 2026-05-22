@@ -77,14 +77,16 @@ def choose_augmentation():
     return input("Enter choice: ")
 
 def apply_augmentation(image, choice):
-    if choice == "2":
+    if choice == "Blur":
         image = image.filter(ImageFilter.GaussianBlur(radius=5))
-    elif choice == "3":
+
+    elif choice == "Black box":
         img_np = np.array(image)
         h, w, _ = img_np.shape
         img_np[h//3:2*h//3, w//3:2*w//3] = 0
         image = Image.fromarray(img_np)
-    elif choice == "4":
+
+    elif choice == "Noise":
         img_np = np.array(image).astype(np.float32)
         noise = np.random.normal(0, 25, img_np.shape)
         img_np = np.clip(img_np + noise, 0, 255).astype(np.uint8)
