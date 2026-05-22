@@ -52,11 +52,11 @@ Afterwards, you can skip directly to the [Training and Evaluation Pipeline](#tra
 
 ## AMD 
 ```bash
-pip install torch torchvision --index-url https://download.pytorch.org/whl/rocm6.0
+pip install torch torchvision --index-url https://download.pytorch.org/whl/rocm7.2
 ```
 ## NVIDIA
  ```bash
-pip install torch torchvision --index-url https://download.pytorch.org/whl/cu118
+pip install torch torchvision --index-url https://download.pytorch.org/whl/cu126
 ```
 
 ## Training and Evaluation Pipeline
