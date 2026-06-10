@@ -1,0 +1,36 @@
+# ── Base: your existing ROCm image ───────────────────────────────────────────
+FROM rocm/dev-ubuntu-24.04:latest
+
+# ── System deps (Python not pre-installed in dev-ubuntu image) ────────────────
+RUN apt-get update && apt-get install -y --no-install-recommends \
+        python3 \
+        python3-venv \
+        python3-pip \
+        python3-dev \
+        libgl1 \
+        libglib2.0-0 \
+        build-essential \
+    && rm -rf /var/lib/apt/lists/*
+
+# ── Create venv ───────────────────────────────────────────────────────────────
+ENV VENV_PATH=/opt/venv
+RUN python3 -m venv $VENV_PATH
+ENV PATH="$VENV_PATH/bin:$PATH"
+
+# ── Upgrade pip inside venv ───────────────────────────────────────────────────
+RUN pip install --upgrade pip
+
+# ── Install ROCm-flavoured PyTorch FIRST (before other deps) ──────────────────
+RUN pip install torch torchvision \
+        --index-url https://download.pytorch.org/whl/rocm7.2
+
+# ── Install the rest of the project requirements ──────────────────────────────
+COPY requirements.txt /tmp/requirements.txt
+RUN pip install -r /tmp/requirements.txt
+
+# ── Copy project ──────────────────────────────────────────────────────────────
+WORKDIR /app
+COPY . .
+
+# ── Default command ───────────────────────────────────────────────────────────
+CMD ["python", "app.py"]
