@@ -82,8 +82,35 @@ gradio
 kagglehub
 split-folders
 ```
+The torch and torchvision packages are not pinned in requirements.txt to allow users to install the correct version depending on their hardware setup.
 
----
+Install PyTorch separately before installing the remaining dependencies.
+### - CPU (default)
+For CPU-only usage:
+```bash
+pip install torch torchvision
+pip install -r requirements.txt
+```
+
+### - AMD ROCM
+For AMD GPUs, install the ROCm-compatible [PyTorch build](https://rocm.docs.amd.com/projects/install-on-linux/en/latest/)
+
+⚠️ ROCm is officially supported on Linux. WSL support is possible but experimental and may require additional configuration.
+
+🐳 Docker / Dev Container (ROCm-ready)
+
+This repository includes a Docker Dev Container configured for a full ROCm environment.
+
+It is intended for Linux + AMD GPU setups and provides a fully preconfigured environment, meaning no manual installation of dependencies is required inside the container and everything is handled automatically.
+
+⚠️ Note: The Docker image is large (~40GB) due to the full ROCm + ML stack preinstalled.
+
+### - NVIDIA CUDA
+If you have an NVIDIA GPU, install PyTorch with CUDA support from the [official guide](https://pytorch.org/get-started/locally/)
+Then install the remaining dependencies:
+```bash
+pip install -r requirements.txt
+```
 
 ## Usage
 
@@ -137,20 +164,6 @@ Augmentation options available at inference:
 - **Noise** — Gaussian noise (σ = 25)
 
 These let you probe how sensitive the model is to different parts of the scan.
-
----
-
-## Dev container
-
-This project runs inside a Docker dev container with ROCm support for AMD GPUs.
-
-If you hit a shared memory error during training, add this to your `devcontainer.json`:
-
-```json
-"runArgs": ["--shm-size=2gb"]
-```
-
-Then rebuild the container.
 
 ---
 
