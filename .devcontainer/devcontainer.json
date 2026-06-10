@@ -4,7 +4,8 @@
   "runArgs": [
     "--device=/dev/kfd",
     "--device=/dev/dri",
-    "--group-add=video"
+    "--group-add=video",
+    "--shm-size=2gb"
   ],
   "remoteEnv": {
     "PATH": "/opt/venv/bin:${containerEnv:PATH}"
